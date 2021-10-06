@@ -28,9 +28,9 @@ namespace NTNSE8_04
             CreateExcel();
         }
 
-        public  void LoadData()
+        public void LoadData()
         {
-           Flats = context.Flat.ToList();
+            Flats = context.Flat.ToList();
         }
 
         public void CreateExcel()
@@ -41,7 +41,7 @@ namespace NTNSE8_04
                 xlWB = xlApp.Workbooks.Add(Missing.Value);
                 xlSheet = xlWB.ActiveSheet;
 
-                //CreateTable();
+                CreateTable();
 
                 xlApp.Visible = true;
                 xlApp.UserControl = true;
@@ -55,6 +55,32 @@ namespace NTNSE8_04
                 xlApp.Quit();
                 xlWB = null;
                 xlApp = null;
+            }
+        }
+
+        public void CreateTable()
+        {
+            string[] headers = new string[]
+            {
+                "Kód",
+                 "Eladó",
+                 "Oldal",
+                 "Kerület",
+                 "Lift",
+                 "Szobák száma",
+                 "Alapterület (m2)",
+                 "Ár (mFt)",
+                 "Négyzetméter ár (Ft/m2)" };
+            
+            for (int i = 0; i<headers.Length; i++)
+			{
+                xlSheet.Cells[1, i+1] = headers[i];
+            }
+
+            object[,] values = new object[Flats.Count, headers.Length];
+            foreach (var item in Flats)
+            {
+
             }
         }
     }
