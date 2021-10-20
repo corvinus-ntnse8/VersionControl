@@ -1,4 +1,5 @@
-﻿using System;
+﻿using NTNSE8_week06.Entities;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,9 +13,30 @@ namespace NTNSE8_week06
 {
     public partial class Form1 : Form
     {
+        PortfolioEntities context = new PortfolioEntities();
+        List<Tick> Ticks;
+        List<PortfolioItem> Portfolio = new List<PortfolioItem>();
         public Form1()
         {
             InitializeComponent();
+            Ticks = context.Tick.ToList();
+            dataGridView1.DataSource = Ticks;
+            CreatePortfolio();
+        }
+
+        private void CreatePortfolio()
+        {
+            Portfolio.Add(new PortfolioItem() { Index = "OTP", Volume = 10 });
+            Portfolio.Add(new PortfolioItem() { Index = "ZWACK", Volume = 10 });
+            Portfolio.Add(new PortfolioItem() { Index = "ELMU", Volume = 10 });
+
+            //ugyanez, csak hosszabban:
+            //PortfolioItem p = new PortfolioItem();
+            //p.Index = "OTP";
+            //p.Volume = 10;
+            //Portfolio.Add(p);
+            dataGridView2.DataSource = Portfolio;
         }
     }
+
 }
