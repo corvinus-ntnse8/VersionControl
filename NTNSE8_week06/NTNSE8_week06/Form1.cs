@@ -83,9 +83,11 @@ namespace NTNSE8_week06
             {
                 foreach (var ny in Nyereségek)
                 {
-                    sw.WriteLine(string.Format(
-                        "{0}",
-                        ny));
+                    sw.WriteLine("Időszak\tNyereség");
+                    for (int i = 0; i < Nyereségek.Count; i++)
+                    {
+                        sw.WriteLine((i+1).ToString()+"\t" + Nyereségek[i]);
+                    }
                 }
             }
         }
