@@ -1,4 +1,5 @@
-﻿using NTNSE8_hatodik.MnbServiceReference;
+﻿using NTNSE8_hatodik.Entities;
+using NTNSE8_hatodik.MnbServiceReference;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -13,6 +14,7 @@ namespace NTNSE8_hatodik
 {
     public partial class Form1 : Form
     {
+        BindingList<RateData> Rates;
         public Form1()
         {
             InitializeComponent();
@@ -26,6 +28,9 @@ namespace NTNSE8_hatodik
 
             var response = mnbService.GetExchangeRates(request);
             var result = response.GetExchangeRatesResult;
+
+            dataGridView1.DataSource = Rates;
         }
+        
     }
 }
