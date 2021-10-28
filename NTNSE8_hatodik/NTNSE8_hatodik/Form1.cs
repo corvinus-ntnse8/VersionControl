@@ -17,6 +17,7 @@ namespace NTNSE8_hatodik
     public partial class Form1 : Form
     {
         BindingList<RateData> Rates = new BindingList<RateData>();
+        BindingList<string> Currencies = new BindingList<string>();
         public Form1()
         {
             InitializeComponent();
@@ -25,8 +26,10 @@ namespace NTNSE8_hatodik
 
         private void Refresh_data()
         {
+            Rates.Clear();
             WebServiceHivo();
             dataGridView1.DataSource = Rates;
+            //comboBox1.DataSource = Currencies;
             XMLFeldolgozo();
             Diagramkeszito();
         }
