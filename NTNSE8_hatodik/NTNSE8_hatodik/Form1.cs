@@ -21,6 +21,7 @@ namespace NTNSE8_hatodik
         public Form1()
         {
             InitializeComponent();
+            GetCurrencies();
             Refresh_data();
         }
 
@@ -29,7 +30,6 @@ namespace NTNSE8_hatodik
             Rates.Clear();
             WebServiceHivo();
             dataGridView1.DataSource = Rates;
-            //comboBox1.DataSource = Currencies;
             XMLFeldolgozo();
             Diagramkeszito();
         }
@@ -85,6 +85,21 @@ namespace NTNSE8_hatodik
             chartArea.AxisX.MajorGrid.Enabled = false;
             chartArea.AxisY.MajorGrid.Enabled = false;
             chartArea.AxisY.IsStartedFromZero = false;
+        }
+        private void GetCurrencies()
+        {
+            MNBArfolyamServiceSoapClient mnbservice = new MNBArfolyamServiceSoapClient();
+            GetCurrenciesRequestBody request = new GetCurrenciesRequestBody();
+            var response = mnbservice.GetCurrencies(request);
+            var result = response.GetCurrenciesResult;
+            XmlDocument xml = new XmlDocument();
+            xml.LoadXml(result);
+            foreach (XmlElement item in xml.DocumentElement.ChildNodes[0])
+            {
+                string elem = item.InnerText;
+                Currencies.Add(elem);
+            }
+            comboBox1.DataSource = Currencies;
         }
 
         private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
