@@ -14,6 +14,7 @@ namespace ntnse8_week8
     public partial class Form1 : Form
     {
         private List<Ball> _balls = new List<Ball>();
+
         private BallFactory _factory;
         public BallFactory Factory
         {
@@ -36,20 +37,19 @@ namespace ntnse8_week8
 
         private void conveyorTimer_Tick(object sender, EventArgs e)
         {
-            var maxpos = 0;
-            foreach (var b in _balls)
+            var maxPosition = 0;
+            foreach (var ball in _balls)
             {
-                b.MoveBall();
-                if (b.Left>maxpos)
-                {
-                    maxpos = b.Left;
-                }
+                ball.MoveBall();
+                if (ball.Left > maxPosition)
+                    maxPosition = ball.Left;
             }
-            if (maxpos>1000)
+
+            if (maxPosition > 1000)
             {
-                var oldestball = _balls[0];
-                mainPanel.Controls.Remove(oldestball);
-                _balls.Remove(oldestball);
+                var oldestBall = _balls[0];
+                mainPanel.Controls.Remove(oldestBall);
+                _balls.Remove(oldestBall);
             }
         }
     }
