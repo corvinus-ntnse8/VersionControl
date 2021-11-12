@@ -22,7 +22,7 @@ namespace ntnse8_week8
 
         {
             get { return _toyFactory; }
-            set { _toyFactory = value; }
+            set { _toyFactory = value; DisplayNext(); }
         }
 
         public Form1()
@@ -69,7 +69,14 @@ namespace ntnse8_week8
 
         private void DisplayNext()
         {
-
+            if (_nextToy != null)
+            {
+                this.Controls.Remove(_nextToy);
+            }
+            _nextToy = ToyFactory.CreateNew();
+            _nextToy.Top = label1.Top + label1.Height + 20;
+            _nextToy.Left = label1.Left;
+            this.Controls.Add(_nextToy);
         }
     }
 }

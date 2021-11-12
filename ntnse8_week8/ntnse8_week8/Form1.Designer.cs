@@ -35,13 +35,14 @@ namespace ntnse8_week8
             this.conveyorTimer = new System.Windows.Forms.Timer(this.components);
             this.carbtn = new System.Windows.Forms.Button();
             this.ballbtn = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // mainPanel
             // 
-            this.mainPanel.Location = new System.Drawing.Point(12, 98);
+            this.mainPanel.Location = new System.Drawing.Point(12, 172);
             this.mainPanel.Name = "mainPanel";
-            this.mainPanel.Size = new System.Drawing.Size(776, 340);
+            this.mainPanel.Size = new System.Drawing.Size(776, 266);
             this.mainPanel.TabIndex = 0;
             // 
             // createTimer
@@ -76,17 +77,28 @@ namespace ntnse8_week8
             this.ballbtn.UseVisualStyleBackColor = true;
             this.ballbtn.Click += new System.EventHandler(this.ballbtn_Click);
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(417, 12);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(35, 13);
+            this.label1.TabIndex = 3;
+            this.label1.Text = "label1";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.ballbtn);
             this.Controls.Add(this.carbtn);
             this.Controls.Add(this.mainPanel);
             this.Name = "Form1";
             this.Text = "Form1";
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -97,6 +109,7 @@ namespace ntnse8_week8
         private System.Windows.Forms.Timer conveyorTimer;
         private System.Windows.Forms.Button carbtn;
         private System.Windows.Forms.Button ballbtn;
+        private System.Windows.Forms.Label label1;
     }
 }
 
