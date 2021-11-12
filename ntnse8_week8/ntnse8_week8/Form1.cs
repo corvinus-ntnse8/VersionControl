@@ -92,5 +92,14 @@ namespace ntnse8_week8
             
             button.BackColor = cd.Color;
         }
+
+        private void prsbtn_Click(object sender, EventArgs e)
+        {
+            ToyFactory = new PresentFactory()
+            {
+                BoxColor = btncolorBox.BackColor,
+                RibbonColor = btnclrRibbon.BackColor,
+            };
+        }
     }
 }

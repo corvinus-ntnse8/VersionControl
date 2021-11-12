@@ -37,13 +37,16 @@ namespace ntnse8_week8
             this.ballbtn = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.btnColor = new System.Windows.Forms.Button();
+            this.prsbtn = new System.Windows.Forms.Button();
+            this.btncolorBox = new System.Windows.Forms.Button();
+            this.btnclrRibbon = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // mainPanel
             // 
-            this.mainPanel.Location = new System.Drawing.Point(12, 172);
+            this.mainPanel.Location = new System.Drawing.Point(12, 264);
             this.mainPanel.Name = "mainPanel";
-            this.mainPanel.Size = new System.Drawing.Size(776, 266);
+            this.mainPanel.Size = new System.Drawing.Size(776, 174);
             this.mainPanel.TabIndex = 0;
             // 
             // createTimer
@@ -97,11 +100,44 @@ namespace ntnse8_week8
             this.btnColor.UseVisualStyleBackColor = false;
             this.btnColor.Click += new System.EventHandler(this.btnColor_Click);
             // 
+            // prsbtn
+            // 
+            this.prsbtn.Location = new System.Drawing.Point(260, 12);
+            this.prsbtn.Name = "prsbtn";
+            this.prsbtn.Size = new System.Drawing.Size(98, 62);
+            this.prsbtn.TabIndex = 5;
+            this.prsbtn.Text = "Present";
+            this.prsbtn.UseVisualStyleBackColor = true;
+            this.prsbtn.Click += new System.EventHandler(this.prsbtn_Click);
+            // 
+            // btncolorBox
+            // 
+            this.btncolorBox.BackColor = System.Drawing.Color.Gold;
+            this.btncolorBox.Location = new System.Drawing.Point(260, 80);
+            this.btncolorBox.Name = "btncolorBox";
+            this.btncolorBox.Size = new System.Drawing.Size(98, 17);
+            this.btncolorBox.TabIndex = 6;
+            this.btncolorBox.UseVisualStyleBackColor = false;
+            this.btncolorBox.Click += new System.EventHandler(this.btnColor_Click);
+            // 
+            // btnclrRibbon
+            // 
+            this.btnclrRibbon.BackColor = System.Drawing.Color.DarkRed;
+            this.btnclrRibbon.Location = new System.Drawing.Point(260, 103);
+            this.btnclrRibbon.Name = "btnclrRibbon";
+            this.btnclrRibbon.Size = new System.Drawing.Size(98, 17);
+            this.btnclrRibbon.TabIndex = 7;
+            this.btnclrRibbon.UseVisualStyleBackColor = false;
+            this.btnclrRibbon.Click += new System.EventHandler(this.btnColor_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.btnclrRibbon);
+            this.Controls.Add(this.btncolorBox);
+            this.Controls.Add(this.prsbtn);
             this.Controls.Add(this.btnColor);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.ballbtn);
@@ -123,6 +159,9 @@ namespace ntnse8_week8
         private System.Windows.Forms.Button ballbtn;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnColor;
+        private System.Windows.Forms.Button prsbtn;
+        private System.Windows.Forms.Button btncolorBox;
+        private System.Windows.Forms.Button btnclrRibbon;
     }
 }
 
