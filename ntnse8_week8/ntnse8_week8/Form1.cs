@@ -17,6 +17,7 @@ namespace ntnse8_week8
 
         private BallFactory _factory;
         public BallFactory Factory
+
         {
             get { return _factory; }
             set { _factory = value; }
@@ -40,7 +41,7 @@ namespace ntnse8_week8
             var maxPosition = 0;
             foreach (var ball in _balls)
             {
-                ball.MoveBall();
+                ball.MoveToy();
                 if (ball.Left > maxPosition)
                     maxPosition = ball.Left;
             }
