@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ntnse8_week8.Entities
 {
-    public class BallFactory: IToyFactory
+    public class CarFactory : IToyFactory
     {
         public Toy CreateNew()
         {
