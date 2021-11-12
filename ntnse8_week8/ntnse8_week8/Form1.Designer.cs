@@ -36,6 +36,7 @@ namespace ntnse8_week8
             this.carbtn = new System.Windows.Forms.Button();
             this.ballbtn = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
+            this.btnColor = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // mainPanel
@@ -86,11 +87,22 @@ namespace ntnse8_week8
             this.label1.TabIndex = 3;
             this.label1.Text = "label1";
             // 
+            // btnColor
+            // 
+            this.btnColor.BackColor = System.Drawing.Color.RoyalBlue;
+            this.btnColor.Location = new System.Drawing.Point(135, 80);
+            this.btnColor.Name = "btnColor";
+            this.btnColor.Size = new System.Drawing.Size(98, 17);
+            this.btnColor.TabIndex = 4;
+            this.btnColor.UseVisualStyleBackColor = false;
+            this.btnColor.Click += new System.EventHandler(this.btnColor_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.btnColor);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.ballbtn);
             this.Controls.Add(this.carbtn);
@@ -110,6 +122,7 @@ namespace ntnse8_week8
         private System.Windows.Forms.Button carbtn;
         private System.Windows.Forms.Button ballbtn;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button btnColor;
     }
 }
 

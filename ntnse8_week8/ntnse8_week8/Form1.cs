@@ -64,7 +64,11 @@ namespace ntnse8_week8
 
         private void ballbtn_Click(object sender, EventArgs e)
         {
-            ToyFactory = new BallFactory();
+            ToyFactory = new BallFactory()
+            {
+                BallColor = btnColor.BackColor
+            };
+
         }
 
         private void DisplayNext()
@@ -77,6 +81,16 @@ namespace ntnse8_week8
             _nextToy.Top = label1.Top + label1.Height + 20;
             _nextToy.Left = label1.Left;
             this.Controls.Add(_nextToy);
+        }
+
+        private void btnColor_Click(object sender, EventArgs e)
+        {
+            var button = (Button)sender;
+            var cd = new ColorDialog();
+            cd.Color = button.BackColor;
+            if (cd.ShowDialog() != DialogResult.OK) return;
+            
+            button.BackColor = cd.Color;
         }
     }
 }
