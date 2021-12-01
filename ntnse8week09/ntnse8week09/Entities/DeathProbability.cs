@@ -9,7 +9,7 @@ namespace ntnse8week09.Entities
     public class DeathProbability
     {
         public Gender Gender { get; set; }
-        public int BirthYear { get; set; }
+        public int Kor { get; set; }
         public double HalVal { get; set; }
     }
 }

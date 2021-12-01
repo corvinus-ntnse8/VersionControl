@@ -8,7 +8,7 @@ namespace ntnse8week09.Entities
 {
     public class BirthProbability
     {
-        public int BirthYear { get; set; }
+        public int Kor { get; set; }
         public int NbrOfChildren { get; set; }
         public double SzulVal { get; set; }
     }
