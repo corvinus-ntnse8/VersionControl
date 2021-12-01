@@ -18,14 +18,23 @@ namespace ntnse8week09
         List<Person> Population = new List<Person>();
         List<BirthProbability> BirthProbabilities = new List<BirthProbability>();
         List<DeathProbability> DeathProbabilities = new List<DeathProbability>();
+        List<int> males = new List<int>();
+        List<int> females = new List<int>();
         public Form1()
         {
             InitializeComponent();
-            Population = GetPopulation(@"C:\Downloads\nép.csv");
-            BirthProbabilities = GetBirthProp(@"C:\Downloads\születés.csv");
-            DeathProbabilities = GetDeathProp(@"C:\Downloads\halál.csv");
+            BirthProbabilities = GetBirthProp(@"C:\Temp\születés.csv");
+            DeathProbabilities = GetDeathProp(@"C:\Temp\halál.csv");
 
-            for (int year = 2005; year <= 2024; year++)
+        }
+
+        private void Simulate()
+        {
+            richTextBox1.Clear();
+            males.Clear();
+            females.Clear();
+            var lastyear = numericUpDown1.Value;
+            for (int year = 2005; year <= lastyear; year++)
             {
                 for (int i = 0; i < Population.Count; i++)
                 {
@@ -35,11 +44,13 @@ namespace ntnse8week09
                 int NumberOfMales = (from x in Population
                                      where x.Gender == Gender.Male && x.IsAlive
                                      select x).Count();
-                int NumberOFemales = (from x in Population
+                int NumberOfFemales = (from x in Population
                                       where x.Gender == Gender.Female && x.IsAlive
                                       select x).Count();
+                males.Add(NumberOfMales);
+                females.Add(NumberOfFemales);
                 Console.WriteLine(
-                        string.Format("Év:{0} Fiúk:{1} Lányok:{2}", year, NumberOfMales, NumberOFemales));
+                        string.Format("Év:{0} Fiúk:{1} Lányok:{2}", year, NumberOfMales, NumberOfFemales));
             }
         }
 
@@ -129,6 +140,29 @@ namespace ntnse8week09
                 }
             }
             return deathProp;
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            Simulate();
+            DisplayNext();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog ofd = new OpenFileDialog();
+            if (ofd.ShowDialog() == DialogResult.OK) 
+                textBox1.Text=ofd.FileName;
+            Population = GetPopulation(textBox1.Text);
+        }
+        public void DisplayNext()
+        {
+            for (int i = 2005; i <= numericUpDown1.Value; i++)
+            {
+                richTextBox1.Text += "Szimulációs év:" + i.ToString()+"\n"+
+                    "\t"+"Férfiak száma:" + males[i-2005] + "\n" +
+                    "\t" + "Nők száma:" + females[i - 2005] + "\n";
+            }
         }
     }
 }
