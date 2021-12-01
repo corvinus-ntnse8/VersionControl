@@ -49,8 +49,6 @@ namespace ntnse8week09
                                       select x).Count();
                 males.Add(NumberOfMales);
                 females.Add(NumberOfFemales);
-                Console.WriteLine(
-                        string.Format("Év:{0} Fiúk:{1} Lányok:{2}", year, NumberOfMales, NumberOfFemales));
             }
         }
 
