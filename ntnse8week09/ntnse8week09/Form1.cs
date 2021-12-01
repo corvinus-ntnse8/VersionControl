@@ -24,6 +24,23 @@ namespace ntnse8week09
             Population = GetPopulation(@"C:\Downloads\nép.csv");
             BirthProbabilities = GetBirthProp(@"C:\Downloads\születés.csv");
             DeathProbabilities = GetDeathProp(@"C:\Downloads\halál.csv");
+
+            for (int year = 2005; year <= 2024; year++)
+            {
+                for (int i = 0; i < Population.Count; i++)
+                {
+                    SimStep(year, Population[i]);
+                }
+
+                int NumberOfMales = (from x in Population
+                                     where x.Gender == Gender.Male && x.IsAlive
+                                     select x).Count();
+                int NumberOFemales = (from x in Population
+                                      where x.Gender == Gender.Female && x.IsAlive
+                                      select x).Count();
+                Console.WriteLine(
+                        string.Format("Év:{0} Fiúk:{1} Lányok:{2}", year, NumberOfMales, NumberOFemales));
+            }
         }
 
         public List<Person> GetPopulation(string csvpath)
@@ -63,6 +80,36 @@ namespace ntnse8week09
                 }
             }
             return birthProp;
+        }
+
+        public void SimStep(int year, Person actualPerson)
+        {
+            if (!actualPerson.IsAlive) return;
+
+            int age = (int)(year - actualPerson.BirthYear);
+
+            var deathprob = (from x in DeathProbabilities
+                             where x.Gender == actualPerson.Gender && x.Kor == age
+                             select x.HalVal).FirstOrDefault();
+
+            if (rng.NextDouble() <= deathprob) actualPerson.IsAlive = false;
+
+            if (actualPerson.IsAlive && actualPerson.Gender == Gender.Female)
+            {
+                var birthprob = (from x in BirthProbabilities
+                                 where x.Kor == age
+                                 select x.SzulVal).FirstOrDefault();
+
+                if (rng.NextDouble() <= birthprob)
+                {
+                    Person újszülött = new Person();
+                    újszülött.BirthYear = year;
+                    újszülött.Gender = (Gender)rng.Next(1, 3);
+                    újszülött.NbrOfChildren = 0;
+                    újszülött.IsAlive = true;
+                    Population.Add(újszülött);
+                }
+            }
         }
 
         public List<DeathProbability> GetDeathProp(string csvpath)
